@@ -1,0 +1,246 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record id="nutribase_ingredient_form_view" model="ir.ui.view">
+            <field name="name">Nutribase_form</field>
+            <field name="model">nutribase.ingredient</field>
+            <field name="view_type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="ingrediente_id"/>
+                        </group>
+                        <separator/>
+                        <group col="4">
+                            <field colspan="3" name="quantidade"/>
+                            <separator/>
+                            <field name="proteinas"/>
+                            <field name="gorduras"/>
+                            <field name="gorduras_saturadas"/>
+                            <field name="gorduras_trans"/>
+                            <field name="fibras"/>
+                            <field name="sodio"/>
+                            <field name="carboidratos"/>
+                            <field name="receita_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="nutribase_ingredient_tree_view" model="ir.ui.view">
+            <field name="name">Nutribase_tree</field>
+            <field name="model">nutribase.ingredient</field>
+            <field name="view_type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ingrediente_id"/>
+                    <field name="quantidade"/>
+                    <field name="receita_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="nutribase_receita_form_view" model="ir.ui.view">
+            <field name="name">Nutribase_receita_form</field>
+            <field name="model">nutribase.receita</field>
+            <field name="view_type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box o_full" name="button_box">
+                            <button class="oe_stat_button btn btn-sm"
+                                name="atualiza_receita" type="object">
+                                <div class="fa fa-user-plus o_button_icon mt8"/>
+                                <div class="o_form_field o_stat_info">
+                                    <p>Calcular</p>
+                                </div>
+                            </button>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <separator/>
+                        <group col="4">
+                            <field name="porcao"/>
+                            <field name="rendimento"/>
+                        </group>
+                        <separator/>
+                        <group col="4">
+                            <field colspan="1" name="proteinas"/>
+                            <field colspan="1" name="gorduras"/>
+                            <field name="gorduras_saturadas"/>
+                            <field name="gorduras_trans"/>
+                            <field name="fibras"/>
+                            <field name="sodio"/>
+                            <field name="carboidratos"/>
+                            <separator colspan="2"/>
+                        </group>
+                        <group col="4">
+                            <field name="calorias"/>
+                            <field name="total_g"/>
+                        </group>
+                        <group>
+                            <field context="{'default_receita_id':id}" name="ingredientes_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="nutribase_receita_tree_view" model="ir.ui.view">
+            <field name="name">Nutribase__receita_tree</field>
+            <field name="model">nutribase.receita</field>
+            <field name="view_type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="ingredientes_ids"/>
+                </tree>
+            </field>
+        </record>
+        <record id="nutribase_ingredient_data_form_view" model="ir.ui.view">
+            <field name="name">Nutribase_data</field>
+            <field name="model">nutribase.ingredient.data</field>
+            <field name="view_type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <separator/>
+                        <group col="4">
+                            <field colspan="2" name="proteinas"/>
+                            <field name="gorduras"/>
+                            <field name="gorduras_saturadas"/>
+                            <field name="gorduras_trans"/>
+                            <field name="fibras"/>
+                            <field name="sodio"/>
+                            <field name="carboidratos"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="nutribase_ingredient_data_tree_view" model="ir.ui.view">
+            <field name="name">Nutribase_ingredient_data_tree</field>
+            <field name="model">nutribase.ingredient.data</field>
+            <field name="view_type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="proteinas"/>
+                    <field name="gorduras"/>
+                    <field name="gorduras_saturadas"/>
+                    <field name="gorduras_trans"/>
+                    <field name="fibras"/>
+                    <field name="sodio"/>
+                    <field name="carboidratos"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        <!--record id="res_partner_form_view" model="ir.ui.view">
+            <field name="name">Customer_receita</field>
+            <field name="model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="arch" type="xml">
+                
+                
+            </field>
+        </record-->
+        
+        
+        <record id="action_nutribase_ingredient_tree_view" model="ir.actions.act_window">
+            <field name="name">Nutribase</field>
+            <field name="res_model">nutribase.ingredient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar um novo Ingrediente
+                </p>
+                <p>
+                    Ingredientes
+                </p>
+            </field>
+        </record>
+        <record id="action_nutribase_ingredient_data_tree_view" model="ir.actions.act_window">
+            <field name="name">Base_de_Dados</field>
+            <field name="res_model">nutribase.ingredient.data</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Adicionando novos dados
+                </p>
+                <p>
+                    Base de dados
+                </p>
+            </field>
+        </record>
+        <record id="action_nutribase_receita_tree_view" model="ir.actions.act_window">
+            <field name="name">Receita</field>
+            <field name="res_model">nutribase.receita</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique para adicionar um novo Receita
+                </p>
+                <p>
+                    Receitas
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_nutribase_root" name="Nutribase"/>
+        <menuitem id="menu_action_nutribase_root_ingredients"
+            name="Ingredientes" parent="menu_nutribase_root"/>
+        <menuitem action="action_nutribase_ingredient_tree_view"
+            id="menu_action_nutribase_root_ingredients_base"
+            name="Ingredientes" parent="menu_action_nutribase_root_ingredients"/>
+        <menuitem action="action_nutribase_receita_tree_view"
+            id="menu_action_nutribase_root_receita" name="Receitas" parent="menu_nutribase_root"/>
+        <menuitem action="action_nutribase_ingredient_data_tree_view"
+            id="menu_action_nutribase_root_basededados"
+            name="Base de dados" parent="menu_action_nutribase_root_ingredients"/>
+        <!-- actions opening views on models -->
+        <!--
+        <record model="ir.actions.act_window" id="newmodule.action_window">
+          <field name="name">newmodule window</field>
+          <field name="res_model">newmodule.newmodule</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+        -->
+        <!-- server action to the one above -->
+        <!--
+        <record model="ir.actions.server" id="newmodule.action_server">
+          <field name="name">newmodule server</field>
+          <field name="model_id" ref="model_newmodule_newmodule"/>
+          <field name="code">
+            action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": self._name,
+            }
+          </field>
+        </record>
+        -->
+        <!-- Top menu item -->
+        <!--
+        <menuitem name="newmodule" id="newmodule.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+        <menuitem name="Menu 1" id="newmodule.menu_1" parent="newmodule.menu_root"/>
+        <menuitem name="Menu 2" id="newmodule.menu_2" parent="newmodule.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+        <menuitem name="List" id="newmodule.menu_1_list" parent="newmodule.menu_1"
+                  action="newmodule.action_window"/>
+        <menuitem name="Server to list" id="newmodule" parent="newmodule.menu_2"
+                  action="newmodule.action_server"/>
+        -->
+    </data>
+</odoo>
