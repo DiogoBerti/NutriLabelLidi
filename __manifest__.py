@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "newmodule",
+    'name': "Nutrição e Qualidade",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Módulo Qualidade e Nutrição""",
 
     'description': """
-        Long description of module's purpose
+        Módulo para controle de qualidade e Gerenciamento de estabelecimentos por profissionais
+        de Nutrição
     """,
 
     'author': "Diogo Berti",
@@ -27,6 +27,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/nutri_base_view.xml',
+        'views/res_partner_view.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode

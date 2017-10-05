@@ -90,3 +90,42 @@ class nutriReceita(models.Model):
             self.carboidratos += (i.carboidratos / self.rendimento) * self.porcao
             self.total_g += i.quantidade
         self.calorias = (self.proteinas * 4) + (self.carboidratos * 4) + (self.gorduras * 9)
+
+class nutriVisita(models.Model):
+    _name = 'nutribase.visit'
+
+    data_visita = fields.Date('Data da visita')
+    partner_id = fields.Many2one('res.partner','Cliente')
+    evaluation_ids = fields.One2many('nutribase.visit.evaluate', 'visit_id', string='Avaliações de Setores')
+
+
+# Opções para avaliações
+options_eval = [('s','S'),
+                ('n', 'N'),
+                ('na', 'NA'),
+                ('no', 'NO')]
+
+class nutriVisitaAvaliacao(models.Model):
+    _name = 'nutribase.visit.evaluate'
+
+    visit_id = fields.Many2one('nutribase.visit', 'Visita Referente')
+    setor = fields.Char('Setor')
+
+    # Adicionar todos os campos para avaliação
+    inspecao = fields.Selection(options_eval,
+                                string=u'Inspeção')
+
+    inspecao_comment = fields.Text(u'Comentário')
+
+    pre_treatment = fields.Selection(options_eval,
+                                string=u'Pré Tratamento')
+
+    pre_treatment_comment = fields.Text(u'Comentário')
+
+    perish_products = fields.Selection(options_eval,
+                                string=u'Amostras de Perecíveis')
+
+    perish_products_comment = fields.Text(u'Comentário')
+
+
+

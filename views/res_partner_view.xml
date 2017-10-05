@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="nutri_res_partner_view" model="ir.ui.view">
+            <field name="name">nutri.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field eval="20" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button attrs="{'invisible': False}"
+                        class="oe_stat_button" icon="fa-newspaper-o"
+                        name="open_visits" type="object">
+                        <field name="visit_ids" string="Visitas" widget="statinfo" />
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
