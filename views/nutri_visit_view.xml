@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+
+        <record id="nutri_visita_form_view" model="ir.ui.view">
+            <field name="name">nutribase.visit.form</field>
+            <field name="model">nutribase.visit</field>
+            <field name="view_type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="data_visita" />
+                            <field name="partner_id" />
+                        </group>
+
+                        <notebook>
+                            <page string="Avaliação">
+                                <field name="evaluation_ids" >
+                                    <tree>
+                                        <field name="setor" />
+                                        <field name="visit_id" />
+
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="nutri_visita_tree_view" model="ir.ui.view">
+            <field name="name">nutribase.visit.tree</field>
+            <field name="model">nutribase.visit</field>
+            <field name="view_type">tree</field>
+            <field name="arch" type="xml">
+                <form>
+                    <tree>
+                        <field name="data_visita" />
+                        <field name="partner_id" />
+                        <field name="evaluation_ids" />
+
+                    </tree>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_nutri_visita_form_view" model="ir.actions.act_window">
+            <field name="name">Visitas</field>
+            <field name="res_model">nutribase.visit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Visitas
+                </p>
+                <p>
+                    Visitas
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="menu_action_nutri_root_visitas"
+                  name="Visitas" parent="menu_nutribase_root"/>
+
+        <menuitem action="action_nutri_visita_form_view"
+                  id="menu_action_nutribase_root_ingredients_base"
+                  name="Visitas" parent="menu_action_nutri_root_visitas"/>
+
+    </data>
+</odoo>

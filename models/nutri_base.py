@@ -127,5 +127,90 @@ class nutriVisitaAvaliacao(models.Model):
 
     perish_products_comment = fields.Text(u'Comentário')
 
+    storage = fields.Selection(options_eval,
+                                string=u'Armazenamento a Temperatura Ambiente (Almoxarifado)')
+
+    storage_comment = fields.Text(u'Comentário')
+
+    # Temperatura ambiente
+    organization = fields.Selection(options_eval,
+                                string=u'Organização')
+
+    organization_comment = fields.Text(u'Comentário')
+
+    pvps = fields.Selection(options_eval,
+                                string=u'PVPS',
+                                help=u'Controle de rotatividade')
+
+    pvps_comment = fields.Text(u'Comentário')
+
+    perish_date = fields.Selection(options_eval,
+                                string=u'Validade dos Produtos',)
+
+    perish_date_comment = fields.Text(u'Comentário')
+
+    chemical_products = fields.Selection(options_eval,
+                                string=u'Produtos químicos',)
+
+    chemical_products_comment = fields.Text(u'Comentário')
+
+    cleaning = fields.Selection(options_eval,
+                                string=u'Limpeza',)
+
+    cleaning_comment = fields.Text(u'Comentário')
+
+    identification = fields.Selection(options_eval,
+                                string=u'Identificação', )
+
+    identification_comment = fields.Text(u'Comentário')
+
+    protection = fields.Selection(options_eval,
+                                string=u'Proteção', )
+
+    protection_comment = fields.Text(u'Comentário')
+
+    # temperatura controlada
+    contr_organization = fields.Selection(options_eval,
+                                string=u'Organização')
+
+    contr_organization_comment = fields.Text(u'Comentário')
+
+    contr_pvps = fields.Selection(options_eval,
+                                string=u'PVPS',
+                                help=u'Controle de rotatividade')
+
+    contr_pvps_comment = fields.Text(u'Comentário')
+
+    contr_perish_date = fields.Selection(options_eval,
+                                string=u'Validade dos Produtos',)
+
+    contr_perish_date_comment = fields.Text(u'Comentário')
+
+    chemical_products = fields.Selection(options_eval,
+                                string=u'Produtos químicos',)
+
+    chemical_products_comment = fields.Text(u'Comentário')
+
+    contr_cleaning = fields.Selection(options_eval,
+                                string=u'Limpeza',)
+
+    contr_cleaning_comment = fields.Text(u'Comentário')
+
+    contr_identification = fields.Selection(options_eval,
+                                string=u'Identificação', )
+
+    contr_identification_comment = fields.Text(u'Comentário')
+
+    contr_protection = fields.Selection(options_eval,
+                                string=u'Proteção', )
+
+    contr_protection_comment = fields.Text(u'Comentário')
+
+    contr_crossed_contamination = fields.Selection(options_eval,
+                                string=u'Contaminação cruzada', )
+
+    contr_crossed_contamination_comment = fields.Text(u'Comentário')
+
+#         Add Temperaturas
 
 
