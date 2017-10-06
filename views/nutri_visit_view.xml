@@ -47,6 +47,63 @@
         </record>
 
 
+        <record id="nutri_evaluation_form_view" model="ir.ui.view">
+            <field name="name">nutribase.visit.evaluate.form</field>
+            <field name="model">nutribase.visit.evaluate</field>
+            <field name="view_type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="visit_id" />
+                            <field name="setor" />
+                        </group>
+
+                        <notebook>
+                            <page name="recebimento" string="Recebimento">
+                                <group>
+                                    <field name="inspecao" />
+                                    <field name="inspecao_comment"
+                                           attrs="{'invisible': [('inspecao','not in',('','n','no'))]}"/>
+
+                                    <field name="pre_treatment" />
+                                    <field name="pre_treatment_comment"
+                                           attrs="{'invisible': [('pre_treatment','not in',('','n','no'))]}"/>
+
+                                    <field name="perish_products" />
+                                    <field name="perish_products_comment"
+                                           attrs="{'invisible': [('perish_products','not in',('','n','no'))]}"/>
+
+                                    <field name="storage" />
+                                    <field name="storage_comment"
+                                           attrs="{'invisible': [('storage','not in',('','n','no'))]}"/>
+                                </group>
+                            </page>
+
+                            <!--Outras paginas -->
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="nutri_evaluation_tree_view" model="ir.ui.view">
+            <field name="name">nutribase.visit.evaluate.tree</field>
+            <field name="model">nutribase.visit.evaluate</field>
+            <field name="view_type">tree</field>
+            <field name="arch" type="xml">
+                <form>
+                    <tree>
+                        <field name="visit_id" />
+                        <field name="setor" />
+
+
+                    </tree>
+                </form>
+            </field>
+        </record>
+
         <!--Actions-->
         <record id="action_nutri_visita_form_view" model="ir.actions.act_window">
             <field name="name">Visitas</field>
@@ -63,6 +120,21 @@
             </field>
         </record>
 
+        <record id="action_nutri_evaluate_form_view" model="ir.actions.act_window">
+            <field name="name">Avaliaçãoes</field>
+            <field name="res_model">nutribase.visit.evaluate</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Avaliações
+                </p>
+                <p>
+                    Visitas
+                </p>
+            </field>
+        </record>
+
 
         <!--Menu itens-->
 
@@ -70,8 +142,12 @@
                   name="Visitas" parent="menu_nutribase_root"/>
 
         <menuitem action="action_nutri_visita_form_view"
-                  id="menu_action_nutribase_root_ingredients_base"
+                  id="menu_action_nutri_visita_root"
                   name="Visitas" parent="menu_action_nutri_root_visitas"/>
+
+        <menuitem action="action_nutri_evaluate_form_view"
+                  id="menu_action_nutri_evaluation_root"
+                  name="Avaliações" parent="menu_action_nutri_root_visitas"/>
 
     </data>
 </odoo>
