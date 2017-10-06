@@ -46,6 +46,8 @@
             </field>
         </record>
 
+
+        <!--Actions-->
         <record id="action_nutri_visita_form_view" model="ir.actions.act_window">
             <field name="name">Visitas</field>
             <field name="res_model">nutribase.visit</field>
@@ -61,6 +63,8 @@
             </field>
         </record>
 
+
+        <!--Menu itens-->
 
         <menuitem id="menu_action_nutri_root_visitas"
                   name="Visitas" parent="menu_nutribase_root"/>
