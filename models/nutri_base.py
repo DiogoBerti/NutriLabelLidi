@@ -110,107 +110,34 @@ class nutriVisitaAvaliacao(models.Model):
 
     visit_id = fields.Many2one('nutribase.visit', 'Visita Referente')
     setor = fields.Char('Setor')
+    evaluate_line_ids = fields.One2many('nutribase.visit.evaluate.lines', 'evaluation_id',
+                                        string='Relatório de avaliação')
 
-    # Adicionar todos os campos para avaliação
-    inspecao = fields.Selection(options_eval,
-                                string=u'Inspeção')
+    # Adicionar um stage
 
-    inspecao_comment = fields.Text(u'Comentário')
+class nutriVisitaAvaliacaoLines(models.Model):
+    _name = 'nutribase.visit.evaluate.lines'
+    evaluation_id = fields.Many2one('nutribase.visit.evaluate')
+    value = fields.Selection(options_eval,
+                             string=u'Conceito')
+    standard_id = fields.Many2one('nutribase.visit.standard', 'Critério')
+    standard_description = fields.Text('Descrição do critério', related='standard_id.description')
+    standard_comment = fields.Text('Comentários:')
 
-    pre_treatment = fields.Selection(options_eval,
-                                string=u'Pré Tratamento')
 
-    pre_treatment_comment = fields.Text(u'Comentário')
+class nutriVisitaCriterios(models.Model):
+    _name = 'nutribase.visit.standard'
 
-    perish_products = fields.Selection(options_eval,
-                                string=u'Amostras de Perecíveis')
+    name = fields.Char('Nome do Critério')
+    description = fields.Text('Descrição')
+    standard_type = fields.Selection([('single','Simples'),
+                                      ('composed', 'Composto')],
+                                     string='Tipo de Critério')
+    sub_id = fields.Many2one('nutribase.visit.standard.sub', 'Sub')
 
-    perish_products_comment = fields.Text(u'Comentário')
-
-    storage = fields.Selection(options_eval,
-                                string=u'Armazenamento a Temperatura Ambiente (Almoxarifado)')
-
-    storage_comment = fields.Text(u'Comentário')
-
-    # Temperatura ambiente
-    organization = fields.Selection(options_eval,
-                                string=u'Organização')
-
-    organization_comment = fields.Text(u'Comentário')
-
-    pvps = fields.Selection(options_eval,
-                                string=u'PVPS',
-                                help=u'Controle de rotatividade')
-
-    pvps_comment = fields.Text(u'Comentário')
-
-    perish_date = fields.Selection(options_eval,
-                                string=u'Validade dos Produtos',)
-
-    perish_date_comment = fields.Text(u'Comentário')
-
-    chemical_products = fields.Selection(options_eval,
-                                string=u'Produtos químicos',)
-
-    chemical_products_comment = fields.Text(u'Comentário')
-
-    cleaning = fields.Selection(options_eval,
-                                string=u'Limpeza',)
-
-    cleaning_comment = fields.Text(u'Comentário')
-
-    identification = fields.Selection(options_eval,
-                                string=u'Identificação', )
-
-    identification_comment = fields.Text(u'Comentário')
-
-    protection = fields.Selection(options_eval,
-                                string=u'Proteção', )
-
-    protection_comment = fields.Text(u'Comentário')
-
-    # temperatura controlada
-    contr_organization = fields.Selection(options_eval,
-                                string=u'Organização')
-
-    contr_organization_comment = fields.Text(u'Comentário')
-
-    contr_pvps = fields.Selection(options_eval,
-                                string=u'PVPS',
-                                help=u'Controle de rotatividade')
-
-    contr_pvps_comment = fields.Text(u'Comentário')
-
-    contr_perish_date = fields.Selection(options_eval,
-                                string=u'Validade dos Produtos',)
-
-    contr_perish_date_comment = fields.Text(u'Comentário')
-
-    chemical_products = fields.Selection(options_eval,
-                                string=u'Produtos químicos',)
-
-    chemical_products_comment = fields.Text(u'Comentário')
-
-    contr_cleaning = fields.Selection(options_eval,
-                                string=u'Limpeza',)
-
-    contr_cleaning_comment = fields.Text(u'Comentário')
-
-    contr_identification = fields.Selection(options_eval,
-                                string=u'Identificação', )
-
-    contr_identification_comment = fields.Text(u'Comentário')
-
-    contr_protection = fields.Selection(options_eval,
-                                string=u'Proteção', )
-
-    contr_protection_comment = fields.Text(u'Comentário')
-
-    contr_crossed_contamination = fields.Selection(options_eval,
-                                string=u'Contaminação cruzada', )
-
-    contr_crossed_contamination_comment = fields.Text(u'Comentário')
-
-#         Add Temperaturas
+class nutriVisitaSubCriterios(models.Model):
+    _name = 'nutribase.visit.standard.sub'
+    name = fields.Char('Nome do Sub Critério')
+    description = fields.Text('Descrição')
 
 
