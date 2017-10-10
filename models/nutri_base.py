@@ -123,21 +123,17 @@ class nutriVisitaAvaliacaoLines(models.Model):
     standard_id = fields.Many2one('nutribase.visit.standard', 'Critério')
     standard_description = fields.Text('Descrição do critério', related='standard_id.description')
     standard_comment = fields.Text('Comentários:')
-
+    division_id = fields.Many2one('nutribase.visit.standard.division', 'Divisão')
 
 class nutriVisitaCriterios(models.Model):
     _name = 'nutribase.visit.standard'
 
     name = fields.Char('Nome do Critério')
-    description = fields.Text('Descrição')
-    standard_type = fields.Selection([('single','Simples'),
-                                      ('composed', 'Composto')],
-                                     string='Tipo de Critério')
-    sub_id = fields.Many2one('nutribase.visit.standard.sub', 'Sub')
-
-class nutriVisitaSubCriterios(models.Model):
-    _name = 'nutribase.visit.standard.sub'
-    name = fields.Char('Nome do Sub Critério')
+    division_id = fields.Many2one('nutribase.visit.standard.division','Divisão')
     description = fields.Text('Descrição')
 
 
+class nutriVisitaDivisao(models.Model):
+    _name = 'nutribase.visit.standard.division'
+
+    name = fields.Char('Nome da Divisão')
